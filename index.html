@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Structure and Algorithms - Homework1</title>
+  </head>
+  <body>
+    <p>Enter Array Element:</p>
+    <input type="text" name="" id="array-value" />
+    <button class="push-btn">Push</button>
+    <p class="array-new"></p>
+    <button class="sort-btn">Sort</button>
+    <p class="array-sort"></p>
+    <p>Check if an element exists:</p>
+    <input type="text" name="" id="array-check-value" />
+    <button class="check-btn">Check</button>
+    <p class="array-check"></p>
+    <p>Check if an element in a 15-value array exists in the 7th index:</p>
+    <input type="text" name="" id="array-7-check-value" />
+    <button class="check-btn-7">Check</button>
+    <p class="array-7-check"></p>
+    <p>Check if an element does not exist at all:</p>
+    <input type="text" name="" id="array-no-value" />
+    <button class="no-btn">Check</button>
+    <p class="array-no"></p>
+    <script>
+      "use strict";
+
+      function inputValue(idName) {
+        return document.querySelector(idName).value;
+      }
+
+      function select(className) {
+        return document.querySelector(className);
+      }
+
+      // Pushing values to an empty Array
+      let arraySample = [];
+      select(".push-btn").addEventListener("click", function () {
+        arraySample.push(inputValue("#array-value"));
+        select(".array-new").textContent = arraySample;
+        select("#array-value").value = null;
+      });
+
+      // Sorting values
+      select(".sort-btn").addEventListener("click", function () {
+        select(".array-sort").textContent = arraySample.sort();
+      });
+
+      // Check if an element exists
+      select(".check-btn").addEventListener("click", function () {
+        if (arraySample.includes(inputValue("#array-check-value"))) {
+          select(".array-check").textContent = "✅ This element exists";
+        } else {
+          select(".array-check").textContent = "❌ This element does not exist";
+        }
+        select("#array-check-value").value = null;
+      });
+
+      // Check if the element exists in the 7th index of a 15-value array
+      select(".check-btn-7").addEventListener("click", function () {
+        if (arraySample[7] === inputValue("#array-7-check-value")) {
+          select(".array-7-check").textContent =
+            "Element exists in the 7th index ☑";
+        } else {
+          select(".array-7-check").textContent =
+            "Element does not exist in the 7th index ❌";
+        }
+      });
+
+      // Check if the element does not exist at all
+      select(".no-btn").addEventListener("click", function () {
+        if (!arraySample.includes(inputValue("#array-no-value"))) {
+          select(".array-no").textContent =
+            "Element does no exist in this array!";
+        } else {
+          select(".array-no").textContent = "";
+        }
+      });
+
+      // Handling Keypresses
+      select("#array-value").addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+          arraySample.push(inputValue("#array-value"));
+          select(".array-new").textContent = arraySample;
+          select("#array-value").value = null;
+        }
+      });
+      select("#array-check-value").addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+          if (arraySample.includes(inputValue("#array-check-value"))) {
+            select(".array-check").textContent = "✅ This element exists";
+          } else {
+            select(".array-check").textContent =
+              "❌ This element does not exist";
+          }
+          select("#array-check-value").value = null;
+        }
+      });
+      select("#array-7-check-value").addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+          if (arraySample[7] === inputValue("#array-7-check-value")) {
+            select(".array-7-check").textContent =
+              "Element exists in the 7th index ✅";
+          } else {
+            select(".array-7-check").textContent =
+              "Element does not exist in the 7th index ❌";
+          }
+        }
+      });
+      select("#array-no-value").addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+          if (!arraySample.includes(inputValue("#array-no-value"))) {
+            select(".array-no").textContent =
+              "Element does no exist in this array!";
+          } else {
+            select(".array-no").textContent = "";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
